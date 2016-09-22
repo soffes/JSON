@@ -6,7 +6,7 @@
 
 Micro framework for easily parsing JSON in Swift 3 with rich error messages in less than 100 lines of code.
 
-> *infomercial voice* Are you tried of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle. Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
+> *infomercial voice* Are you tried of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle? Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
 
 
 ## Usage
