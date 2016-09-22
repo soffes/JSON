@@ -20,6 +20,9 @@ struct User {
 }
 ```
 
+
+### Deserializing Attributes
+
 We can add JSON deserialization to this really easily:
 
 ``` swift
@@ -53,4 +56,43 @@ let dictionary = [
 let sam = User(jsonRepresentation: dictionary)
 ```
 
-Easy as that!
+You can also simply do the following since user is `JSONDeserializable`.
+
+```
+let sam: User = try decode(dictionary)
+```
+
+### Deserializing Nested Dictionaries
+
+Working with nested models is easy. Let's say we have the following post model:
+
+``` swift
+struct Post {
+    let title: String
+    let author: User
+}
+
+extension Post: JSONDeserializable {
+    init(jsonRepresentation dictionary: JSONDictionary) throws {
+        title = try decode(dictionary, key: "title")
+        author = try decode(dictionary, key: "author")
+    }
+}
+```
+
+We can simply treat a nested model like any other kind of attribute because there's a generic function constrainted to `JSONDeserializable`. Here's the annotated implementation:
+
+``` swift
+public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> T {
+    // Decode the value like normal as a JSONDictionary. If this fails for whatever
+    // reason, it will throw the appropriate errors.
+    let value: JSONDictionary = try decode(dictionary, key: key)
+
+    // Decode the model. This will call the initializer in the protocol for the
+    // expected type. If decoding fails in the model, this will also throw the
+    // appropriate erros.
+    return try decode(value)
+}
+```
+
+How cool is that‽

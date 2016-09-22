@@ -21,6 +21,15 @@
 		213822831D947F6F00C1FEEB /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 213822181D94725B00C1FEEB /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		213822841D947F7000C1FEEB /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 213822181D94725B00C1FEEB /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		213822851D947F7000C1FEEB /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 213822181D94725B00C1FEEB /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		213822871D94842900C1FEEB /* DeserializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213822861D94842900C1FEEB /* DeserializationTests.swift */; };
+		213822881D94842900C1FEEB /* DeserializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213822861D94842900C1FEEB /* DeserializationTests.swift */; };
+		213822891D94842900C1FEEB /* DeserializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213822861D94842900C1FEEB /* DeserializationTests.swift */; };
+		2138228B1D94854900C1FEEB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228A1D94854900C1FEEB /* User.swift */; };
+		2138228C1D94854900C1FEEB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228A1D94854900C1FEEB /* User.swift */; };
+		2138228D1D94854900C1FEEB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228A1D94854900C1FEEB /* User.swift */; };
+		2138228F1D94855B00C1FEEB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228E1D94855B00C1FEEB /* Post.swift */; };
+		213822901D94855B00C1FEEB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228E1D94855B00C1FEEB /* Post.swift */; };
+		213822911D94855B00C1FEEB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228E1D94855B00C1FEEB /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +69,9 @@
 		213822531D947EC600C1FEEB /* JSONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		213822671D947EDC00C1FEEB /* JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2138226F1D947EDC00C1FEEB /* JSONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		213822861D94842900C1FEEB /* DeserializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializationTests.swift; sourceTree = "<group>"; };
+		2138228A1D94854900C1FEEB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2138228E1D94855B00C1FEEB /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				2138221B1D94725B00C1FEEB /* DateTests.swift */,
+				213822861D94842900C1FEEB /* DeserializationTests.swift */,
+				2138228A1D94854900C1FEEB /* User.swift */,
+				2138228E1D94855B00C1FEEB /* Post.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -462,6 +477,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				213822251D94766D00C1FEEB /* DateTests.swift in Sources */,
+				213822871D94842900C1FEEB /* DeserializationTests.swift in Sources */,
+				2138228B1D94854900C1FEEB /* User.swift in Sources */,
+				2138228F1D94855B00C1FEEB /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +504,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2138227F1D947F6600C1FEEB /* DateTests.swift in Sources */,
+				213822881D94842900C1FEEB /* DeserializationTests.swift in Sources */,
+				2138228C1D94854900C1FEEB /* User.swift in Sources */,
+				213822901D94855B00C1FEEB /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +523,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2138227E1D947F6500C1FEEB /* DateTests.swift in Sources */,
+				213822891D94842900C1FEEB /* DeserializationTests.swift in Sources */,
+				2138228D1D94854900C1FEEB /* User.swift in Sources */,
+				213822911D94855B00C1FEEB /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +944,7 @@
 				213822451D947EB800C1FEEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2138225C1D947EC600C1FEEB /* Build configuration list for PBXNativeTarget "JSON-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -928,6 +953,7 @@
 				2138225E1D947EC600C1FEEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2138225F1D947EC600C1FEEB /* Build configuration list for PBXNativeTarget "JSONTests-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -936,6 +962,7 @@
 				213822611D947EC600C1FEEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		213822781D947EDC00C1FEEB /* Build configuration list for PBXNativeTarget "JSON-macOS" */ = {
 			isa = XCConfigurationList;
@@ -944,6 +971,7 @@
 				2138227A1D947EDC00C1FEEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2138227B1D947EDC00C1FEEB /* Build configuration list for PBXNativeTarget "JSONTests-macOS" */ = {
 			isa = XCConfigurationList;
@@ -952,6 +980,7 @@
 				2138227D1D947EDC00C1FEEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
