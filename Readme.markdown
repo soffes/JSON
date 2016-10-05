@@ -6,7 +6,7 @@
 
 Micro framework for easily parsing JSON in Swift 3 with rich error messages in less than 100 lines of code.
 
-> *infomercial voice* Are you tried of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle? Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
+> *infomercial voice* 🎙 Are you tried of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle? Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
 
 
 ## Usage
@@ -53,7 +53,7 @@ let dictionary = [
     "created_at": "2016-09-22T22:28:37+02:00"
 ]
 
-let sam = User(jsonRepresentation: dictionary)
+let sam = try User(jsonRepresentation: dictionary)
 ```
 
 You can also simply do the following since user is `JSONDeserializable`.
