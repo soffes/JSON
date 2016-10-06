@@ -35,4 +35,33 @@ final class DeserializationTests: XCTestCase {
 
 		XCTAssertEqual(try! decode(dictionary), post)
 	}
+
+	func testNestedArrayDeserialization() {
+		let dictionary: JSONDictionary = [
+			"title": "My Blog",
+			"posts": [
+				[
+					"title": "Next Post",
+					"author": [
+						"name": "Sam Soffes",
+						"created_at": "2016-09-22T22:28:37+02:00"
+					]
+				],
+				[
+					"title": "Hello World",
+					"author": [
+						"name": "Sam Soffes",
+						"created_at": "2016-09-22T22:28:37+02:00"
+					]
+				]
+			]
+		]
+
+		let blog = Blog(title: "My Blog", posts: [
+			Post(title: "Next Post", author: sam),
+			Post(title: "Hello World", author: sam)
+		])
+
+		XCTAssertEqual(try! decode(dictionary), blog)
+	}
 }

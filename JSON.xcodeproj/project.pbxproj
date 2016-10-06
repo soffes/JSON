@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2133DE311DA6F9DD0015AEBF /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2133DE301DA6F9DD0015AEBF /* Blog.swift */; };
+		2133DE321DA6F9DD0015AEBF /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2133DE301DA6F9DD0015AEBF /* Blog.swift */; };
+		2133DE331DA6F9DD0015AEBF /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2133DE301DA6F9DD0015AEBF /* Blog.swift */; };
 		213822041D94723700C1FEEB /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213821FA1D94723700C1FEEB /* JSON.framework */; };
 		2138221C1D94725B00C1FEEB /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213822151D94725B00C1FEEB /* JSON.swift */; };
 		2138221E1D94725B00C1FEEB /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 213822181D94725B00C1FEEB /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2133DE301DA6F9DD0015AEBF /* Blog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
 		213821FA1D94723700C1FEEB /* JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		213822031D94723700C1FEEB /* JSONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		213822151D94725B00C1FEEB /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				213822861D94842900C1FEEB /* DeserializationTests.swift */,
 				2138228A1D94854900C1FEEB /* User.swift */,
 				2138228E1D94855B00C1FEEB /* Post.swift */,
+				2133DE301DA6F9DD0015AEBF /* Blog.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 			files = (
 				213822251D94766D00C1FEEB /* DateTests.swift in Sources */,
 				213822871D94842900C1FEEB /* DeserializationTests.swift in Sources */,
+				2133DE311DA6F9DD0015AEBF /* Blog.swift in Sources */,
 				2138228B1D94854900C1FEEB /* User.swift in Sources */,
 				2138228F1D94855B00C1FEEB /* Post.swift in Sources */,
 			);
@@ -505,6 +511,7 @@
 			files = (
 				2138227F1D947F6600C1FEEB /* DateTests.swift in Sources */,
 				213822881D94842900C1FEEB /* DeserializationTests.swift in Sources */,
+				2133DE321DA6F9DD0015AEBF /* Blog.swift in Sources */,
 				2138228C1D94854900C1FEEB /* User.swift in Sources */,
 				213822901D94855B00C1FEEB /* Post.swift in Sources */,
 			);
@@ -524,6 +531,7 @@
 			files = (
 				2138227E1D947F6500C1FEEB /* DateTests.swift in Sources */,
 				213822891D94842900C1FEEB /* DeserializationTests.swift in Sources */,
+				2133DE331DA6F9DD0015AEBF /* Blog.swift in Sources */,
 				2138228D1D94854900C1FEEB /* User.swift in Sources */,
 				213822911D94855B00C1FEEB /* Post.swift in Sources */,
 			);

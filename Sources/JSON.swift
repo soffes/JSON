@@ -105,6 +105,18 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 }
 
 
+/// Decode an array of JSONDeserializable types from a given JSON dictionary.
+///
+/// - parameter dictionary: a JSON dictionary
+/// - parameter key: key in the dictionary
+/// - returns: The expected JSONDeserializable value
+/// - throws: JSONDeserializationError
+public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> [T] {
+	let values: [JSONDictionary] = try decode(dictionary, key: key)
+	return values.flatMap { try? decode($0) }
+}
+
+
 /// Decode a JSONDeserializable type
 ///
 /// - parameter dictionary: a JSON dictionary
