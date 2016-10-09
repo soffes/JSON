@@ -18,8 +18,8 @@ final class DateTests: XCTestCase {
 			"utc": "2016-09-22T20:28:37Z"
 		]
 
-		XCTAssertEqual(try! decode(dictionary, key: "timezone"), date)
-		XCTAssertEqual(try! decode(dictionary, key: "utc"), date)
+		XCTAssertEqual(date, try! decode(dictionary, key: "timezone"))
+		XCTAssertEqual(date, try! decode(dictionary, key: "utc"))
 	}
 
 	func testUnixTimestamp() {
@@ -27,6 +27,6 @@ final class DateTests: XCTestCase {
 			"timestamp": 1474576117
 		]
 
-		XCTAssertEqual(try! decode(dictionary, key: "timestamp"), date)
+		XCTAssertEqual(date, try! decode(dictionary, key: "timestamp"))
 	}
 }

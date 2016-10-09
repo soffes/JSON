@@ -19,7 +19,7 @@ final class DeserializationTests: XCTestCase {
 			"created_at": "2016-09-22T22:28:37+02:00"
 		]
 
-		XCTAssertEqual(try! decode(dictionary), sam)
+		XCTAssertEqual(sam, try! decode(dictionary))
 	}
 
 	func testNestedDeserialization() {
@@ -33,7 +33,7 @@ final class DeserializationTests: XCTestCase {
 
 		let post = Post(title: "Hello World", author: sam)
 
-		XCTAssertEqual(try! decode(dictionary), post)
+		XCTAssertEqual(post, try! decode(dictionary))
 	}
 
 	func testNestedArrayDeserialization() {
@@ -62,6 +62,6 @@ final class DeserializationTests: XCTestCase {
 			Post(title: "Hello World", author: sam)
 		])
 
-		XCTAssertEqual(try! decode(dictionary), blog)
+		XCTAssertEqual(blog, try! decode(dictionary))
 	}
 }

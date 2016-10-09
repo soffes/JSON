@@ -33,6 +33,9 @@
 		2138228F1D94855B00C1FEEB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228E1D94855B00C1FEEB /* Post.swift */; };
 		213822901D94855B00C1FEEB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228E1D94855B00C1FEEB /* Post.swift */; };
 		213822911D94855B00C1FEEB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138228E1D94855B00C1FEEB /* Post.swift */; };
+		216E51E31DAAA81F00E7AEBF /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216E51E21DAAA81F00E7AEBF /* URLTests.swift */; };
+		216E51E41DAAA81F00E7AEBF /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216E51E21DAAA81F00E7AEBF /* URLTests.swift */; };
+		216E51E51DAAA81F00E7AEBF /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216E51E21DAAA81F00E7AEBF /* URLTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,7 @@
 		213822861D94842900C1FEEB /* DeserializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializationTests.swift; sourceTree = "<group>"; };
 		2138228A1D94854900C1FEEB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2138228E1D94855B00C1FEEB /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		216E51E21DAAA81F00E7AEBF /* URLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,8 +184,9 @@
 		2138221A1D94725B00C1FEEB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				2138221B1D94725B00C1FEEB /* DateTests.swift */,
 				213822861D94842900C1FEEB /* DeserializationTests.swift */,
+				2138221B1D94725B00C1FEEB /* DateTests.swift */,
+				216E51E21DAAA81F00E7AEBF /* URLTests.swift */,
 				2138228A1D94854900C1FEEB /* User.swift */,
 				2138228E1D94855B00C1FEEB /* Post.swift */,
 				2133DE301DA6F9DD0015AEBF /* Blog.swift */,
@@ -482,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				213822251D94766D00C1FEEB /* DateTests.swift in Sources */,
+				216E51E31DAAA81F00E7AEBF /* URLTests.swift in Sources */,
 				213822871D94842900C1FEEB /* DeserializationTests.swift in Sources */,
 				2133DE311DA6F9DD0015AEBF /* Blog.swift in Sources */,
 				2138228B1D94854900C1FEEB /* User.swift in Sources */,
@@ -510,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2138227F1D947F6600C1FEEB /* DateTests.swift in Sources */,
+				216E51E51DAAA81F00E7AEBF /* URLTests.swift in Sources */,
 				213822881D94842900C1FEEB /* DeserializationTests.swift in Sources */,
 				2133DE321DA6F9DD0015AEBF /* Blog.swift in Sources */,
 				2138228C1D94854900C1FEEB /* User.swift in Sources */,
@@ -530,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2138227E1D947F6500C1FEEB /* DateTests.swift in Sources */,
+				216E51E41DAAA81F00E7AEBF /* URLTests.swift in Sources */,
 				213822891D94842900C1FEEB /* DeserializationTests.swift in Sources */,
 				2133DE331DA6F9DD0015AEBF /* Blog.swift in Sources */,
 				2138228D1D94854900C1FEEB /* User.swift in Sources */,
