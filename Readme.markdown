@@ -79,6 +79,7 @@ struct Post: JSONDeserializable {
         publishedAt = try? deocde(json, key: "published_at")
     }
 }
+```
 
 ### Deserializing Nested Dictionaries
 
