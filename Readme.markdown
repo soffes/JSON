@@ -67,12 +67,14 @@ let sam: User = try decode(dictionary)
 Decoding an optional attribute is easy:
 
 ``` swift
-struct Post: JSONDeserializable {
-    let title: String
+struct Comment {
+    let body: String
     let publishedAt: Date?
+}
 
+extension Comment {
     init(jsonRepresentation json: JSONDictionary) throws {
-        title = try deocde(json, key: "title")
+        body = try deocde(json, key: "body")
 
         // See how we use `try?` to just get `nil` if it fails to decode?
         // Easy as that!
