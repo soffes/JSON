@@ -27,9 +27,9 @@ We can add JSON deserialization to this really easily:
 
 ``` swift
 extension User: JSONDeserializable {
-    init(jsonRepresentation dictionary: JSONDictionary) throws {
-        name = try decode(dictionary, key: "name")
-        createdAt = try decode(dictionary, key: "created_at")
+    init(jsonRepresentation json: JSONDictionary) throws {
+        name = try decode(json, key: "name")
+        createdAt = try decode(json, key: "created_at")
     }
 }
 ```
@@ -62,6 +62,24 @@ You can also simply do the following since user is `JSONDeserializable`.
 let sam: User = try decode(dictionary)
 ```
 
+### Optional Attributes
+
+Decoding an optional attribute is easy:
+
+``` swift
+struct Post: JSONDeserializable {
+    let title: String
+    let publishedAt: Date?
+
+    init(jsonRepresentation json: JSONDictionary) throws {
+        title = try deocde(json, key: "title")
+
+        // See how we use `try?` to just get `nil` if it fails to decode?
+        // Easy as that!
+        publishedAt = try? deocde(json, key: "published_at")
+    }
+}
+
 ### Deserializing Nested Dictionaries
 
 Working with nested models is easy. Let's say we have the following post model:
@@ -73,9 +91,9 @@ struct Post {
 }
 
 extension Post: JSONDeserializable {
-    init(jsonRepresentation dictionary: JSONDictionary) throws {
-        title = try decode(dictionary, key: "title")
-        author = try decode(dictionary, key: "author")
+    init(jsonRepresentation json: JSONDictionary) throws {
+        title = try decode(json, key: "title")
+        author = try decode(json, key: "author")
     }
 }
 ```
