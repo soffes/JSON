@@ -95,4 +95,33 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 }
 ```
 
+
+### Deserializing Custom Types
+
+Let's say you have the following enum:
+
+``` swift
+enum RelationshipStatus: String {
+    case stranger
+    case friend
+    case blocked
+}
+```
+
+You could define a `decode` function for this type very easily:
+
+``` swift
+func decode(_ dictionary: JSONDictionary, key: String) throws -> RelationshipStatus {
+    let string: String = try decode(dictionary, key: key)
+
+    guard let status = RelationshipStatus(rawValue: string) else {
+        throw JSONDeserializationError.invalidAttribute(key: key)
+    }
+
+    return status
+}
+```
+
+Then you can do `try decode(dictionary, key: "status")` like normal and it will throw the appropriate errors for you.
+
 How cool is that‽
