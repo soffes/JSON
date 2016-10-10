@@ -12,6 +12,7 @@ import JSON
 final class DateTests: XCTestCase {
 	let date = Date(timeIntervalSince1970: 1474576117)
 
+	@available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, watchOSApplicationExtension 3.0, tvOSApplicationExtension 10.0, *)
 	func testISO8601() {
 		let dictionary = [
 			"timezone": "2016-09-22T22:28:37+02:00",
