@@ -11,12 +11,11 @@ import JSON
 
 final class DeserializationTests: XCTestCase {
 
-	let sam = User(name: "Sam Soffes", createdAt: Date(timeIntervalSince1970: 1474576117))
+	let sam = User(name: "Sam Soffes")
 
 	func testDeserialization() {
 		let dictionary = [
-			"name": "Sam Soffes",
-			"created_at": "2016-09-22T22:28:37+02:00"
+			"name": "Sam Soffes"
 		]
 
 		XCTAssertEqual(sam, try! decode(dictionary))
@@ -26,8 +25,7 @@ final class DeserializationTests: XCTestCase {
 		let dictionary: JSONDictionary = [
 			"title": "Hello World",
 			"author": [
-				"name": "Sam Soffes",
-				"created_at": "2016-09-22T22:28:37+02:00"
+				"name": "Sam Soffes"
 			]
 		]
 
@@ -43,15 +41,13 @@ final class DeserializationTests: XCTestCase {
 				[
 					"title": "Next Post",
 					"author": [
-						"name": "Sam Soffes",
-						"created_at": "2016-09-22T22:28:37+02:00"
+						"name": "Sam Soffes"
 					]
 				],
 				[
 					"title": "Hello World",
 					"author": [
-						"name": "Sam Soffes",
-						"created_at": "2016-09-22T22:28:37+02:00"
+						"name": "Sam Soffes"
 					]
 				]
 			]

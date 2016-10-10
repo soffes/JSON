@@ -11,18 +11,16 @@ import JSON
 
 struct User: Equatable {
 	let name: String
-	let createdAt: Date
 }
 
 
 extension User: JSONDeserializable {
 	init(jsonRepresentation dictionary: JSONDictionary) throws {
 		name = try decode(dictionary, key: "name")
-		createdAt = try decode(dictionary, key: "created_at")
 	}
 }
 
 
 func ==(lhs: User, rhs: User) -> Bool {
-	return lhs.name == rhs.name && lhs.createdAt == rhs.createdAt
+	return lhs.name == rhs.name
 }
