@@ -6,7 +6,7 @@
 
 Micro framework for easily parsing JSON in Swift 3 with rich error messages in less than 100 lines of code.
 
-> *infomercial voice* 🎙 Are you tried of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle? Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
+> *infomercial voice* 🎙 Are you tired of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle? Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
 
 
 ## Usage
@@ -43,7 +43,7 @@ func decode<T>(_ dictionary: JSONDictionary, key: String) throws -> T
 func decode(_ dictionary: JSONDictionary, key: String) throws -> Date
 ```
 
-There's a specialized verion that returns a `Date`. You can supply your own functions for custom types if you wish.
+There's a specialized version that returns a `Date`. You can supply your own functions for custom types if you wish.
 
 Here's deserialization in action:
 
@@ -74,11 +74,11 @@ struct Comment {
 
 extension Comment {
     init(jsonRepresentation json: JSONDictionary) throws {
-        body = try deocde(json, key: "body")
+        body = try decode(json, key: "body")
 
         // See how we use `try?` to just get `nil` if it fails to decode?
         // Easy as that!
-        publishedAt = try? deocde(json, key: "published_at")
+        publishedAt = try? decode(json, key: "published_at")
     }
 }
 ```
@@ -101,7 +101,7 @@ extension Post: JSONDeserializable {
 }
 ```
 
-We can simply treat a nested model like any other kind of attribute because there's a generic function constrainted to `JSONDeserializable`. Here's the annotated implementation:
+We can simply treat a nested model like any other kind of attribute because there's a generic function constrained to `JSONDeserializable`. Here's the annotated implementation:
 
 ``` swift
 public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> T {
@@ -111,7 +111,7 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 
     // Decode the model. This will call the initializer in the protocol for the
     // expected type. If decoding fails in the model, this will also throw the
-    // appropriate erros.
+    // appropriate error.
     return try decode(value)
 }
 ```
