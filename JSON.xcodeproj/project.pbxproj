@@ -615,7 +615,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 3.0.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -665,7 +665,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 3.0.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
@@ -719,7 +719,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.json.tests;
 				PRODUCT_NAME = JSONTests;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.2;
 			};
 			name = Debug;
 		};
@@ -733,7 +733,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.json.tests;
 				PRODUCT_NAME = JSONTests;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.2;
 			};
 			name = Release;
 		};
@@ -825,7 +825,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.json.tests;
 				PRODUCT_NAME = JSONTests;
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.2;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
@@ -840,7 +840,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.json.tests;
 				PRODUCT_NAME = JSONTests;
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.2;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
@@ -898,7 +898,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.json.tests;
 				PRODUCT_NAME = JSONTests;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.2;
 			};
 			name = Debug;
 		};
@@ -915,7 +915,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsoffes.json.tests;
 				PRODUCT_NAME = JSONTests;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.2;
 			};
 			name = Release;
 		};
