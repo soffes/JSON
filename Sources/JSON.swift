@@ -73,7 +73,7 @@ public func decode(_ dictionary: JSONDictionary, key: String) throws -> Date {
 		throw JSONDeserializationError.missingAttribute(key: key)
 	}
 
-	if #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, watchOSApplicationExtension 3.0, tvOSApplicationExtension 10.0, *) {
+	if #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, watchOSApplicationExtension 3.0, tvOSApplicationExtension 10.0, iOS 10.0, *) {
 		if let string = value as? String {
 			guard let date = ISO8601DateFormatter().date(from: string) else {
 				throw JSONDeserializationError.invalidAttribute(key: key)
