@@ -16,30 +16,30 @@ public typealias JSONDictionary = [String: Any]
 
 /// Protocol for things that can be deserialized with JSON.
 public protocol JSONDeserializable {
-	/// Initialize with a JSON representation
-	///
-	/// - parameter jsonRepresentation: JSON representation
-	/// - throws: JSONError
-	init(jsonRepresentation: JSONDictionary) throws
+  /// Initialize with a JSON representation
+  ///
+  /// - parameter jsonRepresentation: JSON representation
+  /// - throws: JSONError
+  init(jsonRepresentation: JSONDictionary) throws
 }
 
 
 public protocol JSONSerializable {
-	/// JSON representation
-	var jsonRepresentation: JSONDictionary { get }
+  /// JSON representation
+  var jsonRepresentation: JSONDictionary { get }
 }
 
 
 /// Errors for deserializing JSON representations
 public enum JSONDeserializationError: Error {
-	/// A required attribute was missing
-	case missingAttribute(key: String)
-
-	/// An invalid type for an attribute was found
-	case invalidAttributeType(key: String, expectedType: Any.Type, receivedValue: Any)
-
-	/// An attribute was invalid
-	case invalidAttribute(key: String)
+  /// A required attribute was missing
+  case missingAttribute(key: String)
+  
+  /// An invalid type for an attribute was found
+  case invalidAttributeType(key: String, expectedType: Any.Type, receivedValue: Any)
+  
+  /// An attribute was invalid
+  case invalidAttribute(key: String)
 }
 
 
@@ -50,15 +50,15 @@ public enum JSONDeserializationError: Error {
 /// - returns: The expected value
 /// - throws: JSONDeserializationError
 public func decode<T>(_ dictionary: JSONDictionary, key: String) throws -> T {
-	guard let value = dictionary[key] else {
-		throw JSONDeserializationError.missingAttribute(key: key)
-	}
-
-	guard let attribute = value as? T else {
-		throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: T.self, receivedValue: value)
-	}
-
-	return attribute
+  guard let value = dictionary[key] else {
+    throw JSONDeserializationError.missingAttribute(key: key)
+  }
+  
+  guard let attribute = value as? T else {
+    throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: T.self, receivedValue: value)
+  }
+  
+  return attribute
 }
 
 
@@ -69,29 +69,27 @@ public func decode<T>(_ dictionary: JSONDictionary, key: String) throws -> T {
 /// - returns: The expected value
 /// - throws: JSONDeserializationError
 public func decode(_ dictionary: JSONDictionary, key: String) throws -> Date {
-	guard let value = dictionary[key] else {
-		throw JSONDeserializationError.missingAttribute(key: key)
-	}
-
-	if #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, watchOSApplicationExtension 3.0, tvOSApplicationExtension 10.0, *) {
-		if let string = value as? String {
-			guard let date = ISO8601DateFormatter().date(from: string) else {
-				throw JSONDeserializationError.invalidAttribute(key: key)
-			}
-
-			return date
-		}
-	}
-
-	if let timeInterval = value as? TimeInterval {
-		return Date(timeIntervalSince1970: timeInterval)
-	}
-
-	if let timeInterval = value as? Int {
-		return Date(timeIntervalSince1970: TimeInterval(timeInterval))
-	}
-
-	throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: String.self, receivedValue: value)
+  guard let value = dictionary[key] else {
+    throw JSONDeserializationError.missingAttribute(key: key)
+  }
+  
+  if let string = value as? String {
+    guard let date = ISO8601DateFormat(from: string) else {
+      throw JSONDeserializationError.invalidAttribute(key: key)
+    }
+    
+    return date
+  }
+  
+  if let timeInterval = value as? TimeInterval {
+    return Date(timeIntervalSince1970: timeInterval)
+  }
+  
+  if let timeInterval = value as? Int {
+    return Date(timeIntervalSince1970: TimeInterval(timeInterval))
+  }
+  
+  throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: String.self, receivedValue: value)
 }
 
 
@@ -102,15 +100,15 @@ public func decode(_ dictionary: JSONDictionary, key: String) throws -> Date {
 /// - returns: The expected value
 /// - throws: JSONDeserializationError
 public func decode(_ dictionary: JSONDictionary, key: String) throws -> URL {
-	guard let string = dictionary[key] as? String else {
-		throw JSONDeserializationError.missingAttribute(key: key)
-	}
-
-	if let url = URL(string: string) {
-		return url
-	}
-
-	throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: URL.self, receivedValue: string)
+  guard let string = dictionary[key] as? String else {
+    throw JSONDeserializationError.missingAttribute(key: key)
+  }
+  
+  if let url = URL(string: string) {
+    return url
+  }
+  
+  throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: URL.self, receivedValue: string)
 }
 
 
@@ -121,8 +119,8 @@ public func decode(_ dictionary: JSONDictionary, key: String) throws -> URL {
 /// - returns: The expected JSONDeserializable value
 /// - throws: JSONDeserializationError
 public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> T {
-	let value: JSONDictionary = try decode(dictionary, key: key)
-	return try decode(value)
+  let value: JSONDictionary = try decode(dictionary, key: key)
+  return try decode(value)
 }
 
 
@@ -133,8 +131,8 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 /// - returns: The expected JSONDeserializable value
 /// - throws: JSONDeserializationError
 public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> [T] {
-	let values: [JSONDictionary] = try decode(dictionary, key: key)
-	return values.flatMap { try? decode($0) }
+  let values: [JSONDictionary] = try decode(dictionary, key: key)
+  return values.flatMap { try? decode($0) }
 }
 
 
@@ -144,5 +142,25 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 /// - returns: the decoded type
 /// - throws: JSONDeserializationError
 public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary) throws -> T {
-	return try T.init(jsonRepresentation: dictionary)
+  return try T.init(jsonRepresentation: dictionary)
 }
+
+/// Handle ISOISO8601 with built in formatter or fall back to date formatter.
+///
+/// - parameter string:String to convert to date
+/// - returns: Date or nil
+public func ISO8601DateFormat(from string:String) -> Date? {
+  if #available(OSX 10.12, iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, watchOSApplicationExtension 3.0, tvOSApplicationExtension 10.0, *) {
+    return ISO8601DateFormatter().date(from: string)
+  }
+  
+  let formatter         = DateFormatter()
+  formatter.calendar    = Calendar(identifier: .iso8601)
+  formatter.locale      = Locale(identifier: "en_US_POSIX")
+  formatter.timeZone    = TimeZone(secondsFromGMT: 0)
+  formatter.dateFormat  = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+  
+  return formatter.date(from: string)
+}
+
+
