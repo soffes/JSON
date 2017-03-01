@@ -6,8 +6,6 @@
 //  Copyright © 2016 Sam Soffes. All rights reserved.
 //
 
-import Foundation
-
 /// JSON dictionary type alias.
 ///
 /// Strings must be keys.
@@ -40,109 +38,4 @@ public enum JSONDeserializationError: Error {
 
 	/// An attribute was invalid
 	case invalidAttribute(key: String)
-}
-
-
-/// Generically decode an value from a given JSON dictionary.
-///
-/// - parameter dictionary: a JSON dictionary
-/// - parameter key: key in the dictionary
-/// - returns: The expected value
-/// - throws: JSONDeserializationError
-public func decode<T>(_ dictionary: JSONDictionary, key: String) throws -> T {
-	guard let value = dictionary[key] else {
-		throw JSONDeserializationError.missingAttribute(key: key)
-	}
-
-	guard let attribute = value as? T else {
-		throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: T.self, receivedValue: value)
-	}
-
-	return attribute
-}
-
-
-/// Decode a date value from a given JSON dictionary. ISO8601 or Unix timestamps are supported.
-///
-/// - parameter dictionary: a JSON dictionary
-/// - parameter key: key in the dictionary
-/// - returns: The expected value
-/// - throws: JSONDeserializationError
-public func decode(_ dictionary: JSONDictionary, key: String) throws -> Date {
-	guard let value = dictionary[key] else {
-		throw JSONDeserializationError.missingAttribute(key: key)
-	}
-
-	if #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, watchOSApplicationExtension 3.0, tvOSApplicationExtension 10.0, *) {
-		if let string = value as? String {
-			guard let date = ISO8601DateFormatter().date(from: string) else {
-				throw JSONDeserializationError.invalidAttribute(key: key)
-			}
-
-			return date
-		}
-	}
-
-	if let timeInterval = value as? TimeInterval {
-		return Date(timeIntervalSince1970: timeInterval)
-	}
-
-	if let timeInterval = value as? Int {
-		return Date(timeIntervalSince1970: TimeInterval(timeInterval))
-	}
-
-	throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: String.self, receivedValue: value)
-}
-
-
-/// Decode a URL value from a given JSON dictionary.
-///
-/// - parameter dictionary: a JSON dictionary
-/// - parameter key: key in the dictionary
-/// - returns: The expected value
-/// - throws: JSONDeserializationError
-public func decode(_ dictionary: JSONDictionary, key: String) throws -> URL {
-	guard let string = dictionary[key] as? String else {
-		throw JSONDeserializationError.missingAttribute(key: key)
-	}
-
-	if let url = URL(string: string) {
-		return url
-	}
-
-	throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: URL.self, receivedValue: string)
-}
-
-
-/// Decode a JSONDeserializable type from a given JSON dictionary.
-///
-/// - parameter dictionary: a JSON dictionary
-/// - parameter key: key in the dictionary
-/// - returns: The expected JSONDeserializable value
-/// - throws: JSONDeserializationError
-public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> T {
-	let value: JSONDictionary = try decode(dictionary, key: key)
-	return try decode(value)
-}
-
-
-/// Decode an array of JSONDeserializable types from a given JSON dictionary.
-///
-/// - parameter dictionary: a JSON dictionary
-/// - parameter key: key in the dictionary
-/// - returns: The expected JSONDeserializable value
-/// - throws: JSONDeserializationError
-public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> [T] {
-	let values: [JSONDictionary] = try decode(dictionary, key: key)
-	return values.flatMap { try? decode($0) }
-}
-
-
-/// Decode a JSONDeserializable type
-///
-/// - parameter dictionary: a JSON dictionary
-/// - returns: the decoded type
-/// - throws: JSONDeserializationError
-public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary) throws -> T {
-	return try T.init(jsonRepresentation: dictionary)
 }
