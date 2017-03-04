@@ -59,7 +59,7 @@ let sam = try User(jsonRepresentation: dictionary)
 
 You can also simply do the following since user is `JSONDeserializable`.
 
-```
+``` swift
 let sam: User = try decode(dictionary)
 ```
 
