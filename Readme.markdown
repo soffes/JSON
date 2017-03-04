@@ -112,7 +112,7 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 
     // Decode the model. This will call the initializer in the protocol for the
     // expected type. If decoding fails in the model, this will also throw the
-    // appropriate erros.
+    // appropriate errors.
     return try decode(value)
 }
 ```
