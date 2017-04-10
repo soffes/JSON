@@ -45,7 +45,7 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 /// - throws: JSONDeserializationError
 public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> [T] {
 	let values: [JSONDictionary] = try decode(dictionary, key: key)
-	return values.flatMap { try? decode($0) }
+	return try values.map { try decode($0) }
 }
 
 
