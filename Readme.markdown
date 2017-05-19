@@ -7,7 +7,7 @@
 
 Micro framework for easily parsing JSON in Swift 3 with rich error messages in less than 100 lines of code.
 
-> *infomercial voice* 🎙 Are you tried of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle? Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
+> *infomercial voice* 🎙 Are you tired of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle? Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
 
 
 ## Usage
@@ -75,11 +75,11 @@ struct Comment {
 
 extension Comment {
     init(jsonRepresentation json: JSONDictionary) throws {
-        body = try deocde(json, key: "body")
+        body = try decode(json, key: "body")
 
         // See how we use `try?` to just get `nil` if it fails to decode?
         // Easy as that!
-        publishedAt = try? deocde(json, key: "published_at")
+        publishedAt = try? decode(json, key: "published_at")
     }
 }
 ```
