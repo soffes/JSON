@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013B78AB1FDB3231001246E1 /* IntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B78AA1FDB3231001246E1 /* IntTests.swift */; };
+		013B78AC1FDB3231001246E1 /* IntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B78AA1FDB3231001246E1 /* IntTests.swift */; };
+		013B78AD1FDB3231001246E1 /* IntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B78AA1FDB3231001246E1 /* IntTests.swift */; };
 		213822041D94723700C1FEEB /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213821FA1D94723700C1FEEB /* JSON.framework */; };
 		2138221C1D94725B00C1FEEB /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213822151D94725B00C1FEEB /* JSON.swift */; };
 		2138221E1D94725B00C1FEEB /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 213822181D94725B00C1FEEB /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		013B78AA1FDB3231001246E1 /* IntTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntTests.swift; path = JSONTests/IntTests.swift; sourceTree = "<group>"; };
 		213821FA1D94723700C1FEEB /* JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		213822031D94723700C1FEEB /* JSONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		213822151D94725B00C1FEEB /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				215DB4BE1DC374B200034124 /* Blog.swift */,
 				215DB4BF1DC374B200034124 /* DateTests.swift */,
 				215DB4C01DC374B200034124 /* DeserializationTests.swift */,
+				013B78AA1FDB3231001246E1 /* IntTests.swift */,
 				215DB4C11DC374B200034124 /* Post.swift */,
 				215DB4C21DC374B200034124 /* URLTests.swift */,
 				215DB4C31DC374B200034124 /* User.swift */,
@@ -509,6 +514,7 @@
 			files = (
 				215DB4CC1DC3752400034124 /* DeserializationTests.swift in Sources */,
 				215DB4CA1DC3752400034124 /* Blog.swift in Sources */,
+				013B78AB1FDB3231001246E1 /* IntTests.swift in Sources */,
 				215DB4CF1DC3752400034124 /* User.swift in Sources */,
 				215DB4CE1DC3752400034124 /* URLTests.swift in Sources */,
 				215DB4CB1DC3752400034124 /* DateTests.swift in Sources */,
@@ -544,6 +550,7 @@
 			files = (
 				215DB4D81DC3752600034124 /* DeserializationTests.swift in Sources */,
 				215DB4D61DC3752600034124 /* Blog.swift in Sources */,
+				013B78AD1FDB3231001246E1 /* IntTests.swift in Sources */,
 				215DB4DB1DC3752600034124 /* User.swift in Sources */,
 				215DB4DA1DC3752600034124 /* URLTests.swift in Sources */,
 				215DB4D71DC3752600034124 /* DateTests.swift in Sources */,
@@ -568,6 +575,7 @@
 			files = (
 				215DB4D21DC3752500034124 /* DeserializationTests.swift in Sources */,
 				215DB4D01DC3752500034124 /* Blog.swift in Sources */,
+				013B78AC1FDB3231001246E1 /* IntTests.swift in Sources */,
 				215DB4D51DC3752500034124 /* User.swift in Sources */,
 				215DB4D41DC3752500034124 /* URLTests.swift in Sources */,
 				215DB4D11DC3752500034124 /* DateTests.swift in Sources */,
