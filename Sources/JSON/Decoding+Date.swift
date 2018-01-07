@@ -1,11 +1,3 @@
-//
-//  JSON+Date.swift
-//  JSON
-//
-//  Created by Sam Soffes on 3/1/17.
-//  Copyright © 2017 Sam Soffes. All rights reserved.
-//
-
 import Foundation
 
 /// Decode a date value from a given JSON dictionary. ISO8601 or Unix timestamps are supported.
@@ -19,14 +11,12 @@ public func decode(_ dictionary: JSONDictionary, key: String) throws -> Date {
 		throw JSONDeserializationError.missingAttribute(key: key)
 	}
 
-	if #available(iOSApplicationExtension 10.0, OSXApplicationExtension 10.12, watchOSApplicationExtension 3.0, tvOSApplicationExtension 10.0, *) {
-		if let string = value as? String {
-			guard let date = ISO8601DateFormatter().date(from: string) else {
-				throw JSONDeserializationError.invalidAttribute(key: key)
-			}
-
-			return date
+	if #available(OSXApplicationExtension 10.12, iOSApplicationExtension 10.0, watchOSApplicationExtension 3.0, tvOSApplicationExtension 10.0, *), let string = value as? String {
+		guard let date = ISO8601DateFormatter().date(from: string) else {
+			throw JSONDeserializationError.invalidAttribute(key: key)
 		}
+
+		return date
 	}
 
 	if let timeInterval = value as? TimeInterval {

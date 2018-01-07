@@ -2,10 +2,10 @@
 
 [![Version](https://img.shields.io/github/release/soffes/JSON.svg)](https://github.com/soffes/JSON/releases)
 [![Build Status](https://travis-ci.org/soffes/JSON.svg?branch=master)](https://travis-ci.org/soffes/JSON)
-![Swift Version](https://img.shields.io/badge/swift-3.0.2-orange.svg)
+![Swift Version](https://img.shields.io/badge/swift-4.0-orange.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-Micro framework for easily parsing JSON in Swift 3 with rich error messages in less than 100 lines of code.
+Micro framework for easily parsing JSON in Swift with rich error messages in less than 100 lines of code.
 
 > *infomercial voice* 🎙 Are you tried of parsing JSON and not knowing what went wrong? Do you find complicated frameworks with confusing custom operators a hassle? Are you constantly wishing this could be simpler? Well now it can be, with JSON! Enjoy the Simple™
 

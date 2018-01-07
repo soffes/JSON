@@ -1,11 +1,3 @@
-//
-//  JSON+URL.swift
-//  JSON
-//
-//  Created by Sam Soffes on 3/1/17.
-//  Copyright © 2017 Sam Soffes. All rights reserved.
-//
-
 import Foundation
 
 /// Decode a URL value from a given JSON dictionary.

@@ -1,11 +1,3 @@
-//
-//  URLTests.swift
-//  JSON
-//
-//  Created by Sam Soffes on 10/9/16.
-//  Copyright © 2016 Sam Soffes. All rights reserved.
-//
-
 import XCTest
 import JSON
 

@@ -1,11 +1,3 @@
-//
-//  Decoding.swift
-//  JSON
-//
-//  Created by Sam Soffes on 3/1/17.
-//  Copyright © 2017 Sam Soffes. All rights reserved.
-//
-
 /// Generically decode an value from a given JSON dictionary.
 ///
 /// - parameter dictionary: a JSON dictionary
@@ -24,7 +16,6 @@ public func decode<T>(_ dictionary: JSONDictionary, key: String) throws -> T {
 	return attribute
 }
 
-
 /// Decode a JSONDeserializable type from a given JSON dictionary.
 ///
 /// - parameter dictionary: a JSON dictionary
@@ -36,7 +27,6 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 	return try decode(value)
 }
 
-
 /// Decode an array of JSONDeserializable types from a given JSON dictionary.
 ///
 /// - parameter dictionary: a JSON dictionary
@@ -47,7 +37,6 @@ public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: Str
 	let values: [JSONDictionary] = try decode(dictionary, key: key)
 	return values.flatMap { try? decode($0) }
 }
-
 
 /// Decode a JSONDeserializable type
 ///
