@@ -12,7 +12,7 @@ Micro framework for easily parsing JSON in Swift with rich error messages in les
 
 ## Usage
 
-Let's say we have a simple user struct:
+Let’s say we have a simple user struct:
 
 ``` swift
 struct User {
@@ -28,39 +28,35 @@ We can add JSON deserialization to this really easily:
 
 ``` swift
 extension User: JSONDeserializable {
-    init(jsonRepresentation json: JSONDictionary) throws {
-        name = try decode(json, key: "name")
-        createdAt = try decode(json, key: "created_at")
+    init(json: JSON) throws {
+        name = try json.decode(key: "name")
+        createdAt = try json.decode(key: "created_at")
     }
 }
 ```
 
-(`JSONDictionary` is simply a typealias for `[String: Any]`.)
+(`JSON` is simply a typealias for `[String: Any]`.)
 
-Notice that you don't have to specify types! This uses Swift generics and pattern matching so you don't have to worry about this. The interface for those decode functions look like this:
+Notice that you don’t have to specify types! This uses Swift generics and pattern matching so you don’t have to worry about this. The interface for those decode functions look like this:
 
 ``` swift
-func decode<T>(_ dictionary: JSONDictionary, key: String) throws -> T
-func decode(_ dictionary: JSONDictionary, key: String) throws -> Date
+func decode<T: JSONDeserializable>(key: String) throws -> T
+func decode<T: JSONDeserializable>(key: String) throws -> [T]
+func decode(key: String) throws -> Date
+func decode(key: String) throws -> URL
 ```
 
-There's a specialized verion that returns a `Date`. You can supply your own functions for custom types if you wish.
+There’s a specialized verion that returns a `Date`. You can supply your own functions for custom types if you wish.
 
-Here's deserialization in action:
+Here’s deserialization in action:
 
 ``` swift
-let dictionary = [
+let json = [
     "name": "Sam Soffes",
     "created_at": "2016-09-22T22:28:37+02:00"
 ]
 
-let sam = try User(jsonRepresentation: dictionary)
-```
-
-You can also simply do the following since user is `JSONDeserializable`.
-
-```
-let sam: User = try decode(dictionary)
+let sam = try User(json: json)
 ```
 
 ### Optional Attributes
@@ -74,19 +70,19 @@ struct Comment {
 }
 
 extension Comment {
-    init(jsonRepresentation json: JSONDictionary) throws {
-        body = try deocde(json, key: "body")
+    init(json: JSON) throws {
+        body = try json.decode(key: "body")
 
         // See how we use `try?` to just get `nil` if it fails to decode?
         // Easy as that!
-        publishedAt = try? deocde(json, key: "published_at")
+        publishedAt = try? json.decode(key: "published_at")
     }
 }
 ```
 
 ### Deserializing Nested Dictionaries
 
-Working with nested models is easy. Let's say we have the following post model:
+Working with nested models is easy. Let’s say we have the following post model:
 
 ``` swift
 struct Post {
@@ -95,32 +91,19 @@ struct Post {
 }
 
 extension Post: JSONDeserializable {
-    init(jsonRepresentation json: JSONDictionary) throws {
-        title = try decode(json, key: "title")
-        author = try decode(json, key: "author")
+    init(json: JSONDictionary) throws {
+        title = try json.decode(key: "title")
+        author = try json.decode(key: "author")
     }
 }
 ```
 
-We can simply treat a nested model like any other kind of attribute because there's a generic function constrainted to `JSONDeserializable`. Here's the annotated implementation:
-
-``` swift
-public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> T {
-    // Decode the value like normal as a JSONDictionary. If this fails for whatever
-    // reason, it will throw the appropriate errors.
-    let value: JSONDictionary = try decode(dictionary, key: key)
-
-    // Decode the model. This will call the initializer in the protocol for the
-    // expected type. If decoding fails in the model, this will also throw the
-    // appropriate erros.
-    return try decode(value)
-}
-```
+We can simply treat a nested model like any other kind of attribute because there’s a generic function constrainted to `JSONDeserializable` and `User` in our example conforms to that.
 
 
 ### Deserializing Custom Types
 
-Let's say you have the following enum:
+Let’s say you have the following enum:
 
 ``` swift
 enum RelationshipStatus: String {
@@ -133,17 +116,19 @@ enum RelationshipStatus: String {
 You could define a `decode` function for this type very easily:
 
 ``` swift
-func decode(_ dictionary: JSONDictionary, key: String) throws -> RelationshipStatus {
-    let string: String = try decode(dictionary, key: key)
+extension Dictionary where Key : StringProtocol {
+    func decode(key: Key) throws -> RelationshipStatus {
+        let string: String = try decode(key: key)
 
-    guard let status = RelationshipStatus(rawValue: string) else {
-        throw JSONDeserializationError.invalidAttribute(key: key)
+        guard let status = RelationshipStatus(rawValue: string) else {
+            throw JSONDeserializationError.invalidAttribute(key: String(key))
+        }
+
+        return status
     }
-
-    return status
 }
 ```
 
-Then you can do `try decode(dictionary, key: "status")` like normal and it will throw the appropriate errors for you.
+Then you can do `try json.decode(key: "status")` like normal and it will throw the appropriate errors for you.
 
 How cool is that‽

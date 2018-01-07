@@ -6,15 +6,15 @@ final class DeserializationTests: XCTestCase {
 	let sam = User(name: "Sam Soffes")
 
 	func testDeserialization() {
-		let dictionary = [
+		let json = [
 			"name": "Sam Soffes"
 		]
 
-		XCTAssertEqual(sam, try! decode(dictionary))
+		XCTAssertEqual(sam, try? User(json: json))
 	}
 
 	func testNestedDeserialization() {
-		let dictionary: JSONDictionary = [
+		let json: JSON = [
 			"title": "Hello World",
 			"author": [
 				"name": "Sam Soffes"
@@ -23,11 +23,11 @@ final class DeserializationTests: XCTestCase {
 
 		let post = Post(title: "Hello World", author: sam)
 
-		XCTAssertEqual(post, try! decode(dictionary))
+		XCTAssertEqual(post, try? Post(json: json))
 	}
 
 	func testNestedArrayDeserialization() {
-		let dictionary: JSONDictionary = [
+		let json: JSON = [
 			"title": "My Blog",
 			"posts": [
 				[
@@ -50,6 +50,6 @@ final class DeserializationTests: XCTestCase {
 			Post(title: "Hello World", author: sam)
 		])
 
-		XCTAssertEqual(blog, try! decode(dictionary))
+		XCTAssertEqual(blog, try? Blog(json: json))
 	}
 }

@@ -1,48 +1,39 @@
-/// Generically decode an value from a given JSON dictionary.
-///
-/// - parameter dictionary: a JSON dictionary
-/// - parameter key: key in the dictionary
-/// - returns: The expected value
-/// - throws: JSONDeserializationError
-public func decode<T>(_ dictionary: JSONDictionary, key: String) throws -> T {
-	guard let value = dictionary[key] else {
-		throw JSONDeserializationError.missingAttribute(key: key)
+extension Dictionary where Key : StringProtocol {
+	/// Generically decode an value from a given JSON dictionary.
+	///
+	/// - parameter key: key in the dictionary
+	/// - returns: The expected value
+	/// - throws: JSONDeserializationError
+	public func decode<T>(key: Key) throws -> T {
+		guard let value = self[key] else {
+			throw JSONDeserializationError.missingAttribute(key: String(key))
+		}
+
+		guard let attribute = value as? T else {
+			throw JSONDeserializationError.invalidAttributeType(key: String(key), expectedType: T.self,
+																receivedValue: value)
+		}
+
+		return attribute
 	}
 
-	guard let attribute = value as? T else {
-		throw JSONDeserializationError.invalidAttributeType(key: key, expectedType: T.self, receivedValue: value)
+	/// Decode a JSONDeserializable type from a given JSON dictionary.
+	///
+	/// - parameter key: key in the dictionary
+	/// - returns: The expected JSONDeserializable value
+	/// - throws: JSONDeserializationError
+	public func decode<T: JSONDeserializable>(key: Key) throws -> T {
+		let json: JSON = try decode(key: key)
+		return try T.init(json: json)
 	}
 
-	return attribute
-}
-
-/// Decode a JSONDeserializable type from a given JSON dictionary.
-///
-/// - parameter dictionary: a JSON dictionary
-/// - parameter key: key in the dictionary
-/// - returns: The expected JSONDeserializable value
-/// - throws: JSONDeserializationError
-public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> T {
-	let value: JSONDictionary = try decode(dictionary, key: key)
-	return try decode(value)
-}
-
-/// Decode an array of JSONDeserializable types from a given JSON dictionary.
-///
-/// - parameter dictionary: a JSON dictionary
-/// - parameter key: key in the dictionary
-/// - returns: The expected JSONDeserializable value
-/// - throws: JSONDeserializationError
-public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary, key: String) throws -> [T] {
-	let values: [JSONDictionary] = try decode(dictionary, key: key)
-	return values.flatMap { try? decode($0) }
-}
-
-/// Decode a JSONDeserializable type
-///
-/// - parameter dictionary: a JSON dictionary
-/// - returns: the decoded type
-/// - throws: JSONDeserializationError
-public func decode<T: JSONDeserializable>(_ dictionary: JSONDictionary) throws -> T {
-	return try T.init(jsonRepresentation: dictionary)
+	/// Decode an array of JSONDeserializable types from a given JSON dictionary.
+	///
+	/// - parameter key: key in the dictionary
+	/// - returns: The expected JSONDeserializable value
+	/// - throws: JSONDeserializationError
+	public func decode<T: JSONDeserializable>(key: Key) throws -> [T] {
+		let values: [JSON] = try decode(key: key)
+		return values.flatMap { try? T.init(json: $0) }
+	}
 }

@@ -11,8 +11,8 @@ struct Post: Equatable {
 }
 
 extension Post: JSONDeserializable {
-	init(jsonRepresentation dictionary: JSONDictionary) throws {
-		title = try decode(dictionary, key: "title")
-		author = try decode(dictionary, key: "author")
+	init(json: JSON) throws {
+		title = try json.decode(key: "title")
+		author = try json.decode(key: "author")
 	}
 }

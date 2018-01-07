@@ -11,8 +11,8 @@ struct Blog: Equatable {
 }
 
 extension Blog: JSONDeserializable {
-	init(jsonRepresentation dictionary: JSONDictionary) throws {
-		title = try decode(dictionary, key: "title")
-		posts = try decode(dictionary, key: "posts")
+	init(json: JSON) throws {
+		title = try json.decode(key: "title")
+		posts = try json.decode(key: "posts")
 	}
 }

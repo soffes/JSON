@@ -10,7 +10,7 @@ struct User: Equatable {
 }
 
 extension User: JSONDeserializable {
-	init(jsonRepresentation dictionary: JSONDictionary) throws {
-		name = try decode(dictionary, key: "name")
+	init(json: JSON) throws {
+		name = try json.decode(key: "name")
 	}
 }
