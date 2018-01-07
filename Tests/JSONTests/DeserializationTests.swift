@@ -18,10 +18,11 @@ final class DeserializationTests: XCTestCase {
 			"title": "Hello World",
 			"author": [
 				"name": "Sam Soffes"
-			]
+			],
+			"state": "published"
 		]
 
-		let post = Post(title: "Hello World", author: sam)
+		let post = Post(title: "Hello World", author: sam, state: .published)
 
 		XCTAssertEqual(post, try? Post(json: json))
 	}
@@ -34,20 +35,22 @@ final class DeserializationTests: XCTestCase {
 					"title": "Next Post",
 					"author": [
 						"name": "Sam Soffes"
-					]
+					],
+					"state": "draft"
 				],
 				[
 					"title": "Hello World",
 					"author": [
 						"name": "Sam Soffes"
-					]
+					],
+					"state": "published"
 				]
 			]
 		]
 
 		let blog = Blog(title: "My Blog", posts: [
-			Post(title: "Next Post", author: sam),
-			Post(title: "Hello World", author: sam)
+			Post(title: "Next Post", author: sam, state: .draft),
+			Post(title: "Hello World", author: sam, state: .published)
 		])
 
 		XCTAssertEqual(blog, try? Blog(json: json))

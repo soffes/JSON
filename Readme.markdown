@@ -101,11 +101,11 @@ extension Post: JSONDeserializable {
 We can simply treat a nested model like any other kind of attribute because there’s a generic function constrainted to `JSONDeserializable` and `User` in our example conforms to that.
 
 
-### Deserializing Custom Types
+### Deserializing Enums
 
-Let’s say you have the following enum:
+Enums that are `RawRepresentable`, meaning they have an underlying type and no associated values, will deserialize with any additional work! Let’s say we have the following enum:
 
-``` swift
+```swift
 enum RelationshipStatus: String {
     case stranger
     case friend
@@ -113,22 +113,46 @@ enum RelationshipStatus: String {
 }
 ```
 
-You could define a `decode` function for this type very easily:
+We could simply deserialize it like this assuming our `User` example earlier now has a property for it:
 
-``` swift
-extension Dictionary where Key : StringProtocol {
-    func decode(key: Key) throws -> RelationshipStatus {
-        let string: String = try decode(key: key)
+```swift
+let json = [
+    "name": "Sam Soffes",
+    "created_at": "2016-09-22T22:28:37+02:00",
+    "releationship_status": "friend"
+]
 
-        guard let status = RelationshipStatus(rawValue: string) else {
-            throw JSONDeserializationError.invalidAttribute(key: String(key))
-        }
-
-        return status
+extension User: JSONDeserializable {
+    init(json: JSON) throws {
+        name = try json.decode(key: "name")
+        createdAt = try json.decode(key: "created_at")
+        relationshipStatus = try json.decode("relationship_status")
     }
 }
 ```
 
-Then you can do `try json.decode(key: "status")` like normal and it will throw the appropriate errors for you.
+If your enum isn’t `RawRepresentable`, see the next section for providing a custom `decode` method for it.
+
+### Deserializing Custom Types
+
+You can also define custom `decode` function for custom types very easily. We’ll use `TimeZone` as an example:
+
+``` swift
+extension Dictionary where Key : StringProtocol {
+    func decode(key: Key) throws -> TimeZone {
+        // Get the JSON representation of it. Here, it’s a string.
+        let string: String = try decode(key: key)
+
+        // Initialize TimeZone with the identifier you decoded already.
+        guard let timeZone = TimeZone(identifier: string) else {
+            throw JSONDeserializationError.invalidAttribute(key: String(key))
+        }
+
+        return timeZone
+    }
+}
+```
+
+Then you can do `try json.decode(key: "timezone")` like normal and it will throw the appropriate errors for you or decode a valid `TimeZone` value.
 
 How cool is that‽

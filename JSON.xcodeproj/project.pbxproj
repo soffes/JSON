@@ -48,6 +48,10 @@
 		21DA03A72002131D009544E7 /* DeserializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA03A520021319009544E7 /* DeserializationTests.swift */; };
 		21DA03A82002131D009544E7 /* DeserializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA03A520021319009544E7 /* DeserializationTests.swift */; };
 		21DA03A92002131E009544E7 /* DeserializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA03A520021319009544E7 /* DeserializationTests.swift */; };
+		21DA03AB200214FB009544E7 /* Decoding+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA03AA200214FB009544E7 /* Decoding+Enums.swift */; };
+		21DA03AC200214FB009544E7 /* Decoding+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA03AA200214FB009544E7 /* Decoding+Enums.swift */; };
+		21DA03AD200214FB009544E7 /* Decoding+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA03AA200214FB009544E7 /* Decoding+Enums.swift */; };
+		21DA03AE200214FB009544E7 /* Decoding+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA03AA200214FB009544E7 /* Decoding+Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +99,7 @@
 		21DA039320020D88009544E7 /* Decoding+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decoding+Date.swift"; sourceTree = "<group>"; };
 		21DA039420020D88009544E7 /* Decoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
 		21DA03A520021319009544E7 /* DeserializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeserializationTests.swift; path = JSONTests/DeserializationTests.swift; sourceTree = "<group>"; };
+		21DA03AA200214FB009544E7 /* Decoding+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoding+Enums.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +219,7 @@
 			children = (
 				21DA039220020D88009544E7 /* JSON.swift */,
 				21DA039420020D88009544E7 /* Decoding.swift */,
+				21DA03AA200214FB009544E7 /* Decoding+Enums.swift */,
 				21DA039320020D88009544E7 /* Decoding+Date.swift */,
 				21DA039120020D88009544E7 /* Decoding+URL.swift */,
 			);
@@ -508,6 +514,7 @@
 			files = (
 				21DA039520020D88009544E7 /* Decoding+URL.swift in Sources */,
 				21DA039720020D88009544E7 /* Decoding+Date.swift in Sources */,
+				21DA03AB200214FB009544E7 /* Decoding+Enums.swift in Sources */,
 				21DA039820020D88009544E7 /* Decoding.swift in Sources */,
 				21DA039620020D88009544E7 /* JSON.swift in Sources */,
 			);
@@ -532,6 +539,7 @@
 			files = (
 				21DA039D20020D8D009544E7 /* Decoding+URL.swift in Sources */,
 				21DA039F20020D8D009544E7 /* Decoding+Date.swift in Sources */,
+				21DA03AD200214FB009544E7 /* Decoding+Enums.swift in Sources */,
 				21DA03A020020D8D009544E7 /* Decoding.swift in Sources */,
 				21DA039E20020D8D009544E7 /* JSON.swift in Sources */,
 			);
@@ -543,6 +551,7 @@
 			files = (
 				21DA039920020D8D009544E7 /* Decoding+URL.swift in Sources */,
 				21DA039B20020D8D009544E7 /* Decoding+Date.swift in Sources */,
+				21DA03AE200214FB009544E7 /* Decoding+Enums.swift in Sources */,
 				21DA039C20020D8D009544E7 /* Decoding.swift in Sources */,
 				21DA039A20020D8D009544E7 /* JSON.swift in Sources */,
 			);
@@ -567,6 +576,7 @@
 			files = (
 				21DA03A120020D8E009544E7 /* Decoding+URL.swift in Sources */,
 				21DA03A320020D8E009544E7 /* Decoding+Date.swift in Sources */,
+				21DA03AC200214FB009544E7 /* Decoding+Enums.swift in Sources */,
 				21DA03A420020D8E009544E7 /* Decoding.swift in Sources */,
 				21DA03A220020D8E009544E7 /* JSON.swift in Sources */,
 			);
