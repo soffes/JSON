@@ -1,32 +1,21 @@
-//
-//  JSON.swift
-//  JSON
-//
-//  Created by Sam Soffes on 9/22/16.
-//  Copyright © 2016 Sam Soffes. All rights reserved.
-//
-
 /// JSON dictionary type alias.
 ///
 /// Strings must be keys.
-public typealias JSONDictionary = [String: Any]
-
+public typealias JSON = [String: Any]
 
 /// Protocol for things that can be deserialized with JSON.
 public protocol JSONDeserializable {
 	/// Initialize with a JSON representation
 	///
-	/// - parameter jsonRepresentation: JSON representation
-	/// - throws: JSONError
-	init(jsonRepresentation: JSONDictionary) throws
+	/// - parameter json: JSON representation
+	/// - throws: JSONDeserializationError
+	init(json: JSON) throws
 }
-
 
 public protocol JSONSerializable {
 	/// JSON representation
-	var jsonRepresentation: JSONDictionary { get }
+	var json: JSON { get }
 }
-
 
 /// Errors for deserializing JSON representations
 public enum JSONDeserializationError: Error {

@@ -1,28 +1,25 @@
-//
-//  Post.swift
-//  JSON
-//
-//  Created by Sam Soffes on 9/22/16.
-//  Copyright © 2016 Sam Soffes. All rights reserved.
-//
-
 import Foundation
 import JSON
 
 struct Post: Equatable {
+	enum State: String {
+		case draft
+		case published
+	}
+
 	let title: String
 	let author: User
-}
+	let state: State
 
-
-extension Post: JSONDeserializable {
-	init(jsonRepresentation dictionary: JSONDictionary) throws {
-		title = try decode(dictionary, key: "title")
-		author = try decode(dictionary, key: "author")
+	static func == (lhs: Post, rhs: Post) -> Bool {
+		return lhs.title == rhs.title && lhs.author == rhs.author && lhs.state == rhs.state
 	}
 }
 
-
-func ==(lhs: Post, rhs: Post) -> Bool {
-	return lhs.title == rhs.title && lhs.author == rhs.author
+extension Post: JSONDeserializable {
+	init(json: JSON) throws {
+		title = try json.decode(key: "title")
+		author = try json.decode(key: "author")
+		state = try json.decode(key: "state")
+	}
 }

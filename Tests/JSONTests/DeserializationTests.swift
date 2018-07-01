@@ -1,11 +1,3 @@
-//
-//  DeserializationTests.swift
-//  JSON
-//
-//  Created by Sam Soffes on 9/22/16.
-//  Copyright © 2016 Sam Soffes. All rights reserved.
-//
-
 import XCTest
 import JSON
 
@@ -14,51 +6,54 @@ final class DeserializationTests: XCTestCase {
 	let sam = User(name: "Sam Soffes")
 
 	func testDeserialization() {
-		let dictionary = [
+		let json = [
 			"name": "Sam Soffes"
 		]
 
-		XCTAssertEqual(sam, try! decode(dictionary))
+		XCTAssertEqual(sam, try? User(json: json))
 	}
 
 	func testNestedDeserialization() {
-		let dictionary: JSONDictionary = [
+		let json: JSON = [
 			"title": "Hello World",
 			"author": [
 				"name": "Sam Soffes"
-			]
+			],
+			"state": "published"
 		]
 
-		let post = Post(title: "Hello World", author: sam)
+		let post = Post(title: "Hello World", author: sam, state: .published)
 
-		XCTAssertEqual(post, try! decode(dictionary))
+		XCTAssertEqual(post, try? Post(json: json))
 	}
 
 	func testNestedArrayDeserialization() {
-		let dictionary: JSONDictionary = [
+		let json: JSON = [
 			"title": "My Blog",
 			"posts": [
 				[
 					"title": "Next Post",
 					"author": [
 						"name": "Sam Soffes"
-					]
+					],
+					"state": "draft"
 				],
 				[
 					"title": "Hello World",
 					"author": [
 						"name": "Sam Soffes"
-					]
+					],
+					"state": "published"
 				]
 			]
 		]
 
 		let blog = Blog(title: "My Blog", posts: [
-			Post(title: "Next Post", author: sam),
-			Post(title: "Hello World", author: sam)
+			Post(title: "Next Post", author: sam, state: .draft),
+			Post(title: "Hello World", author: sam, state: .published)
 		])
 
-		XCTAssertEqual(blog, try! decode(dictionary))
+		XCTAssertEqual(blog, try? Blog(json: json))
 	}
 	
 	func testNestedErrorDeserialization() {

@@ -1,28 +1,20 @@
-//
-//  URLTests.swift
-//  JSON
-//
-//  Created by Sam Soffes on 10/9/16.
-//  Copyright © 2016 Sam Soffes. All rights reserved.
-//
-
 import XCTest
 import JSON
 
 final class URLTests: XCTestCase {
 	func testValidURL() {
-		let dictionary = [
+		let json = [
 			"url": "http://example.com"
 		]
 
-		XCTAssertEqual(URL(string: "http://example.com")!, try! decode(dictionary, key: "url"))
+		XCTAssertEqual(URL(string: "http://example.com")!, try? json.decode(key: "url"))
 	}
 
 	func testInvalidURL() {
-		let dictionary = [
+		let json = [
 			"url": "~~🍕~~"
 		]
 
-		XCTAssertThrowsError(try decode(dictionary, key: "url") as URL)
+		XCTAssertThrowsError(try json.decode(key: "url") as URL)
 	}
 }
