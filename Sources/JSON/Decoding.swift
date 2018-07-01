@@ -34,6 +34,6 @@ extension Dictionary where Key : StringProtocol {
 	/// - throws: JSONDeserializationError
 	public func decode<T: JSONDeserializable>(key: Key) throws -> [T] {
 		let values: [JSON] = try decode(key: key)
-		return try values.flatMap { try T.init(json: $0) }
+		return try values.compactMap { try T.init(json: $0) }
 	}
 }
