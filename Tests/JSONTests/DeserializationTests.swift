@@ -55,4 +55,26 @@ final class DeserializationTests: XCTestCase {
 
 		XCTAssertEqual(blog, try? Blog(json: json))
 	}
+	
+	func testNestedErrorDeserialization() {
+		let dictionary: JSONDictionary = [
+			"title": "My Blog",
+			"posts": [
+				[
+					"title": "Next Post",
+					"author": [
+						"name": "Sam Soffes"
+					]
+				],
+				[
+					"title": 1,
+					"author": [
+						"name": "Sam Soffes"
+					]
+				]
+			]
+		]
+
+		XCTAssertThrowsError(try decode(dictionary) as Blog)
+	}
 }
